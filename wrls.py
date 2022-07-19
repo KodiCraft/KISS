@@ -12,7 +12,7 @@ class WrlList:
         # Recursively get all .wrl files in the wrl folder with the substring "cpBureau" inside them
         self.wrls = []
         files_scanned = 0
-        MAX_FILES = 100
+        MAX_FILES = 1000
         for root, dirs, files in os.walk(options.get_wrl_folder()):
             if files_scanned >= MAX_FILES:
                 break
