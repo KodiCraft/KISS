@@ -1,23 +1,24 @@
 import os
 import json
 from PyQt5 import QtWidgets
+from options import Options
 
 class UserServers:
     def __init__(self):
         # Check if the config file exists and is a valid json file with a top level array named servers
         try:
-            empty = not os.path.exists('config.json') or not json.load(open('servers.json'))['servers']
+            empty = not os.path.exists(UserServers.get_platform_server_path()) or not json.load(open(UserServers.get_platform_server_path()))['servers']
         except:
             empty = True
         if empty:
             self.servers = []
         else:
-            with open('servers.json', 'r') as f:
+            with open(UserServers.get_platform_server_path(), 'r') as f:
                 config = json.load(f)
                 self.servers = config['servers']
     def save(self):
         # Write the options to a json file in the user's config folder
-        with open('servers.json', 'w') as f:
+        with open(UserServers.get_platform_server_path(), 'w') as f:
             f.write(json.dumps({
                 'servers': self.servers
             }))
@@ -43,3 +44,9 @@ class UserServers:
         ui.userList.clear()
         for server in self.servers:
             ui.userList.addTopLevelItem(QtWidgets.QTreeWidgetItem([server['url'], "Yes" if server['wls'] else "No"]))
+    
+    def get_platform_server_path():
+        # Check if the folder already exists. If not, create it.
+        if not os.path.exists(os.path.join(Options.get_platform_config_prefix(), 'KISS')):
+            os.mkdir(os.path.join(Options.get_platform_config_prefix(), 'KISS'))
+        return os.path.join(Options.get_platform_config_prefix(), 'KISS', 'servers.json')
