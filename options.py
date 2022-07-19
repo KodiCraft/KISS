@@ -17,6 +17,9 @@ class Options:
     def get_wrl_folder(self) -> str:
         print(self.windowRef.wrlFolder.text())
         return self.windowRef.wrlFolder.text()
+    
+    def set_wrl_folder(self, folder: str) -> None:
+        self.windowRef.wrlFolder.setText(folder)
 
     def get_index_url(self) -> str:
         return self.windowRef.indexUrl.text()

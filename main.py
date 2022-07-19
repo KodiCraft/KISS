@@ -97,6 +97,12 @@ def apply():
     ui.indexList.clearSelection()
     ui.wrlList.clearSelection()
 
+def browse_for_wrl_directory():
+    # Open a dialog to select a directory
+    options.set_wrl_folder(QtWidgets.QFileDialog.getExistingDirectory(MainWindow, "Select wrl directory"))
+
+ui.browseWrlFolder.clicked.connect(browse_for_wrl_directory)
+
 MainWindow.show()
 
 ui.applyButton.clicked.connect(apply)
