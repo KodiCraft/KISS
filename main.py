@@ -33,6 +33,10 @@ def remove_server():
 
 wrl_list = WrlList(options)
 wrl_list.update_ui(ui)
+def update_wrl_list():
+    wrl_list.__init__(options)
+    wrl_list.update_ui(ui)
+options.onSaveCallbacks.append(update_wrl_list)
 
 def select_all_wrls():
     for i in range(ui.wrlList.count()):
@@ -46,6 +50,7 @@ ui.selectAll.clicked.connect(select_all_wrls)
 ui.deselectAll.clicked.connect(deselect_all_wrls)
 
 setup_index_list(ui, options)
+options.onSaveCallbacks.append(lambda: setup_index_list(ui, options))
 user_servers.update_ui(ui)
 
 # Only allow one entry to be selected between the two lists (userList and indexList)

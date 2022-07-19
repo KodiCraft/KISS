@@ -3,7 +3,11 @@ from options import Options
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 def get_index(url):
-    response = requests.get(url)
+    try:
+        response = requests.get(url)
+    except:
+        print("Could not connect to index server!")
+        return []
     # Parse the response as JSON
     json = response.json()
     # Check if the response is a valid array

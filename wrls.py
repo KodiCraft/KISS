@@ -11,17 +11,24 @@ class WrlList:
             return
         # Recursively get all .wrl files in the wrl folder with the substring "cpBureau" inside them
         self.wrls = []
+        files_scanned = 0
+        MAX_FILES = 100
         for root, dirs, files in os.walk(options.get_wrl_folder()):
+            if files_scanned >= MAX_FILES:
+                break
             for file in files:
+                if files_scanned >= MAX_FILES:
+                    break
                 if file.endswith(".wrl"):
                     try:
                         if "cpBureau" in open(os.path.join(root, file)).read():
                          self.wrls.append(os.path.join(root, file))
                     except:
                         pass
+                files_scanned += 1
         # Sort the wrls by name
         self.wrls.sort()
-        
+
         self.wrlFolder = options.get_wrl_folder()
 
     def get_wrls(self):

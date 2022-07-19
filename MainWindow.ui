@@ -317,24 +317,6 @@
        <string>Save</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>120</y>
-        <width>641</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Remember to restart the program after saving your new settings!</string>
-      </property>
-     </widget>
     </widget>
    </widget>
   </widget>

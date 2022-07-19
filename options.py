@@ -14,6 +14,8 @@ class Options:
                 self.windowRef = windowRef
                 self.windowRef.wrlFolder.setText(config['wrl_folder'])
                 self.windowRef.indexUrl.setText(config['index_url'])
+        self.onSaveCallbacks = []
+        
 
     def get_wrl_folder(self) -> str:
         print(self.windowRef.wrlFolder.text())
@@ -26,6 +28,8 @@ class Options:
         return self.windowRef.indexUrl.text()
 
     def save(self) -> None:
+        # execute the onEditCallbacks
+        self.executeCallbacks()
         # Write the options to a json file in the user's config folder
         with open(Options.get_platform_config_path(), 'w') as f:
             f.write(json.dumps({
@@ -46,3 +50,10 @@ class Options:
         if not os.path.exists(os.path.join(Options.get_platform_config_prefix(), 'KISS')):
             os.mkdir(os.path.join(Options.get_platform_config_prefix(), 'KISS'))
         return os.path.join(Options.get_platform_config_prefix(), 'KISS', 'config.json')
+    
+    def executeCallbacks(self):
+        for callback in self.onSaveCallbacks:
+            try:
+                callback()
+            except:
+                pass
