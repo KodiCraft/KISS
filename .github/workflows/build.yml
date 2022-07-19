@@ -11,7 +11,7 @@ on:
 jobs:
   
   create-build:
-    runs-on: windows
+    runs-on: windows-latest
     steps:
       - name: Step 1 - Install dependencies
         run: pip install PyQt5 requests
