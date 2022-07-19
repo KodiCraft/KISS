@@ -118,7 +118,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "KSISS"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "KISS"))
         self.tabWidget.setWhatsThis(_translate("MainWindow", "<html><head/><body><p>Menu for setting the server you would like to connect to</p></body></html>"))
         self.selector_tab.setAccessibleName(_translate("MainWindow", "Server Selector"))
         self.label.setText(_translate("MainWindow", "Server Index"))
