@@ -19,7 +19,7 @@ jobs:
       - name: Step 2 - Install pyinstaller
        run: pip install pyinstaller
       - name: Step 3 - Run pyinstaller
-       run: pyinstaller %GITHUB_WORKSPACE%/main.py --windowed
+       run: pyinstaller ../main.py --windowed
       - name: Step 4 - Upload artifacts
        uses: actions/upload-artifact@v2
        with:
