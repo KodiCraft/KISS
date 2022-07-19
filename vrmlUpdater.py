@@ -25,6 +25,7 @@ def set_server(path: str, ip: str, wls: bool) -> None:
                 return
     
     # Replace the original .wrl with the new .wrl
-    os.remove(path)
-
+    os.rename(path, path + ".OLD")
     os.rename('temp.wrl', path)
+    # If we successfully renamed here, we can delete the old file
+    os.remove(path + ".OLD")
