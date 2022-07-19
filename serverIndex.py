@@ -10,15 +10,17 @@ def get_index(url):
         return []
     # Parse the response as JSON
     json = response.json()
-    # Check if the response is a valid array
-    if not isinstance(json, list):
-        print("Invalid response from Server Index")
-        return
+    # Check if the response is a valid iterable
+    try:
+        _ = iter(json)
+    except:
+        print("Got invalid response from server")
+        return []
     # Check if each entry in the array has at least the key "url" and "wls"
     for entry in json:
-        if not entry.get('url') or not entry.get('wls'):
-            print("Invalid response from Server Index")
-            return
+        if not entry.get('url') or not type(entry.get('wls')) == bool:
+            print("Not all entries are correct")
+            return []
     return json
 
 def setup_index_list(ui, options: Options):
