@@ -13,14 +13,16 @@ jobs:
   create-build:
     runs-on: windows-latest
     steps:
-      - name: Step 1 - Install dependencies
-        run: pip install PyQt5 requests
-      - name: Step 2 - Install pyinstaller
-        run: pip install pyinstaller
-      - name: Step 3 - Run pyinstaller
-        run: dir;pyinstaller main.py --windowed
-      - name: Step 4 - Upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: Build
-          path: dist
+      - name: Test - List current directory
+        run: dir
+      #- name: Step 1 - Install dependencies
+      #  run: pip install PyQt5 requests
+      #- name: Step 2 - Install pyinstaller
+      #  run: pip install pyinstaller
+      #- name: Step 3 - Run pyinstaller
+      #  run: pyinstaller main.py --windowed
+      #- name: Step 4 - Upload artifacts
+      #  uses: actions/upload-artifact@v2
+      #  with:
+      #    name: Build
+      #    path: dist
