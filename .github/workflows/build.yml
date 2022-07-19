@@ -1,0 +1,26 @@
+# This is a basic workflow that is manually triggered
+
+name: Manual workflow
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  
+  create-build:
+    runs-on: windows
+    steps:
+      - name: Step 1 - Install dependencies
+        run: pip install PyQt5 requests
+      - name: Step 2 - Install pyinstaller
+        run: pip install pyinstaller
+      - name: Step 3 - Run pyinstaller
+        run: pyinstaller main.py --windowed
+      - name: Step 4 - Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Build
+          path: dist
