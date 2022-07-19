@@ -94,7 +94,7 @@ def apply():
     QtWidgets.QMessageBox.information(MainWindow, "VRML Updater", "Server changed to " + get_selected_server()["url"] + " for " + str(len(wrls_to_apply)) + " wrls")
     # Clear the selection of the user for everything
     ui.userList.clearSelection()
-    ui.indexList.clearSelectionr()
+    ui.indexList.clearSelection()
     ui.wrlList.clearSelection()
 
 MainWindow.show()
