@@ -9,12 +9,19 @@ class WrlList:
             print("Invalid wrl folder, wrls will not be populated until a proper folder is selected")
             self.wrls = []
             return
-        # Recursively get all .wrl files in the wrl folder
+        # Recursively get all .wrl files in the wrl folder with the substring "cpBureau" inside them
         self.wrls = []
         for root, dirs, files in os.walk(options.get_wrl_folder()):
             for file in files:
                 if file.endswith(".wrl"):
-                    self.wrls.append(os.path.join(root, file))
+                    try:
+                        if "cpBureau" in open(os.path.join(root, file)).read():
+                         self.wrls.append(os.path.join(root, file))
+                    except:
+                        pass
+        # Sort the wrls by name
+        self.wrls.sort()
+        
         self.wrlFolder = options.get_wrl_folder()
 
     def get_wrls(self):
