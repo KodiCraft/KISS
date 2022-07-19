@@ -1,11 +1,15 @@
 #!/bin/env python
+# -*- coding: utf-8 -*-
+
+import os
+import sys
+
+from PyQt5 import QtWidgets
+
 from Window import Ui_MainWindow
 from options import Options
 from userServers import UserServers
-from serverIndex import get_index, setup_index_list
-from PyQt5 import QtCore, QtGui, QtWidgets
-import os
-import sys
+from serverIndex import setup_index_list
 import vrmlUpdater
 
 from wrls import WrlList
@@ -19,13 +23,11 @@ options = Options(ui)
 user_servers = UserServers()
 
 def add_server():
-    global user_servers
     user_servers.add_server(ui.serverInput.text(), ui.wlsToggle.isChecked())
     ui.serverInput.clear()
     user_servers.update_ui(ui)
 
 def remove_server():
-    global user_servers
     getSelected = ui.userList.selectedItems()
     if getSelected:
         user_servers.remove_server(ui.userList.indexOfTopLevelItem(getSelected[0]))
@@ -58,8 +60,8 @@ ui.userList.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
 ui.indexList.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
 
 # If the user selects an entry in one of the two lists, deselect the other list
-ui.userList.itemSelectionChanged.connect(lambda: ui.indexList.clearSelection())
-ui.indexList.itemSelectionChanged.connect(lambda: ui.userList.clearSelection())
+ui.userList.itemSelectionChanged.connect(ui.indexList.clearSelection)
+ui.indexList.itemSelectionChanged.connect(ui.userList.clearSelection)
 
 # Make selecting wrls in the wrlList be a toggle
 ui.wrlList.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
