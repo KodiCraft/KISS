@@ -93,9 +93,9 @@ def apply():
     # Display a message box to tell the user that the wrls have been applied
     QtWidgets.QMessageBox.information(MainWindow, "VRML Updater", "Server changed to " + get_selected_server()["url"] + " for " + str(len(wrls_to_apply)) + " wrls")
     # Clear the selection of the user for everything
-    ui.userList.clear()
-    ui.indexList.clear()
-    ui.wrlList.clear()
+    ui.userList.clearSelection()
+    ui.indexList.clearSelectionr()
+    ui.wrlList.clearSelection()
 
 MainWindow.show()
 
