@@ -1,0 +1,5 @@
+dist/*
+build/*
+.vscode/*
+__pycache__/*
+.qt_for_python/*

@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>819</width>
+    <height>568</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>KSISS</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>811</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="whatsThis">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Menu for setting the server you would like to connect to&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="selector_tab">
+     <property name="accessibleName">
+      <string>Server Selector</string>
+     </property>
+     <attribute name="title">
+      <string>Server Selector</string>
+     </attribute>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>27</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Server Index</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>220</y>
+        <width>131</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>User added servers</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="serverRemove">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>400</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Remove</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="serverAdd">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>400</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="serverInput">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>400</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="wlsToggle">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>430</y>
+        <width>391</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Server uses WLS</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="wrlList">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>50</y>
+        <width>361</width>
+        <height>351</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>30</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>.wrl files to update</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="selectAll">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>400</y>
+        <width>181</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Select All</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="deselectAll">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>400</y>
+        <width>181</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Deselect All</string>
+      </property>
+     </widget>
+     <widget class="QTreeWidget" name="indexList">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>391</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>Server Address &amp; Port</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>WLS Required</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignTrailing|AlignVCenter</set>
+       </property>
+      </column>
+     </widget>
+     <widget class="QTreeWidget" name="userList">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>240</y>
+        <width>391</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>Server Address &amp; Port</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>WLS Required</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignTrailing|AlignVCenter</set>
+       </property>
+      </column>
+     </widget>
+     <widget class="QPushButton" name="applyButton">
+      <property name="geometry">
+       <rect>
+        <x>590</x>
+        <y>440</y>
+        <width>181</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Apply</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="options_tab">
+     <attribute name="title">
+      <string>Options</string>
+     </attribute>
+     <widget class="QLineEdit" name="wrlFolder">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>741</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>C:\Sony\Community Place Browser\world</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>761</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>worlds Folder (Contains .wrl files)</string>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="browseWrlFolder">
+      <property name="geometry">
+       <rect>
+        <x>750</x>
+        <y>40</y>
+        <width>24</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>771</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Server Index is a centralised index managed by kodicraft4#6685 &lt;/p&gt;&lt;p&gt;which aims to make discovery of Sapari servers easier.&lt;/p&gt;&lt;p&gt;You may use another index if you'd like.&lt;/p&gt;&lt;p&gt;DM Kodi if you want your server added!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="text">
+       <string>Server Index URL (?)</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="indexUrl">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>761</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>https://sapari.kdcf.me</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="saveButton">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>120</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Save</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>641</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Remember to restart the program after saving your new settings!</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>819</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen_worlds_folder">
+   <property name="text">
+    <string>Open worlds folder...</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
