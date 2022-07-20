@@ -106,7 +106,11 @@ def apply():
 
 def browse_for_wrl_directory():
     # Open a dialog to select a directory
-    options.set_wrl_folder(QtWidgets.QFileDialog.getExistingDirectory(MainWindow, "Select wrl directory"))
+    folder = QtWidgets.QFileDialog.getExistingDirectory(MainWindow, "Select wrl directory")
+    if folder == "":
+        return
+    # Set the wrl folder to the selected directory
+    options.set_wrl_folder(folder)
 
 ui.browseWrlFolder.clicked.connect(browse_for_wrl_directory)
 
