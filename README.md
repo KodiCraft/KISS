@@ -9,6 +9,7 @@ When I first joined the Sapari community, the Server Selector was fairly out of 
   - Saving and switching between multiple user-defined servers
   - Switching the servers for only select files
   - A centralised Server Index to allow for server discovery
+  - Support for WLS servers
 
 # How do I use KISS?
 ## Using a pre-packaged binary
@@ -27,4 +28,4 @@ KISS depends on the following python packaged that can be installed through pip:
  
  # Usage
  
- Once you have KISS open, first make sure the Options are correct. Then, head to the Server Selector tab amd select a server as well as some files you want to edit. Click "Apply" and watch the magic happen!
+ Once you have KISS open, first make sure the Options are correct. Then, head to the Server Selector tab and select a server as well as some files you want to edit. Click "Apply" and watch the magic happen!
