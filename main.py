@@ -3,6 +3,9 @@
 
 import os
 import sys
+import time
+import asyncio
+import threading
 
 from PyQt5 import QtWidgets
 
@@ -11,6 +14,7 @@ from options import Options
 from userServers import UserServers
 from serverIndex import setup_index_list
 import vrmlUpdater
+import pinger
 
 from wrls import WrlList
 
@@ -114,8 +118,36 @@ def browse_for_wrl_directory():
 
 ui.browseWrlFolder.clicked.connect(browse_for_wrl_directory)
 
+
 MainWindow.show()
+print(pinger.ping("not.a.real.url"))
 
 ui.applyButton.clicked.connect(apply)
+
+# Create a thread to update the indexList and userList every few seconds
+nextUpdate = time.time()
+updating = True
+def update_lists():
+    global nextUpdate
+    while updating:
+        if time.time() > nextUpdate:
+            nextUpdate = time.time() + 30
+            user_servers.update_ui(ui)
+            setup_index_list(ui, options)
+
+            # Force the userList and the indexList to have each column be as wide as the widest item in that column
+            ui.userList.resizeColumnToContents(0)
+            ui.userList.resizeColumnToContents(1)
+            ui.indexList.resizeColumnToContents(0)
+            ui.indexList.resizeColumnToContents(1)
+
+update_thread = threading.Thread(target=update_lists)
+update_thread.start()
+
+# When the user closes the window, stop the thread
+def stop_updating(_):
+    global updating
+    updating = False
+MainWindow.closeEvent = stop_updating
 
 sys.exit(app.exec_())

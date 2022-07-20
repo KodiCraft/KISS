@@ -181,6 +181,24 @@
         <height>171</height>
        </rect>
       </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="uniformRowHeights">
+       <bool>false</bool>
+      </property>
+      <property name="itemsExpandable">
+       <bool>true</bool>
+      </property>
+      <property name="sortingEnabled">
+       <bool>false</bool>
+      </property>
+      <attribute name="headerHighlightSections">
+       <bool>false</bool>
+      </attribute>
       <column>
        <property name="text">
         <string>Server Address &amp; Port</string>
@@ -189,6 +207,14 @@
       <column>
        <property name="text">
         <string>WLS Required</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Ping</string>
        </property>
        <property name="textAlignment">
         <set>AlignTrailing|AlignVCenter</set>
@@ -212,6 +238,14 @@
       <column>
        <property name="text">
         <string>WLS Required</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Ping</string>
        </property>
        <property name="textAlignment">
         <set>AlignTrailing|AlignVCenter</set>
@@ -326,7 +360,7 @@
      <x>0</x>
      <y>0</y>
      <width>819</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>

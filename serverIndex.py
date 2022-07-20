@@ -1,6 +1,7 @@
 import requests
 from options import Options
 from PyQt5 import QtCore, QtGui, QtWidgets
+from pinger import ping
 
 def get_index(url):
     try:
@@ -30,4 +31,4 @@ def setup_index_list(ui, options: Options):
     ui.indexList.clear()
     # Add each entry to the list
     for entry in index:
-        ui.indexList.addTopLevelItem(QtWidgets.QTreeWidgetItem([entry['url'], "Yes" if entry['wls'] else "No"]))
+        ui.indexList.addTopLevelItem(QtWidgets.QTreeWidgetItem([entry['url'], "Yes" if entry['wls'] else "No", str(ping(entry['url']))]))

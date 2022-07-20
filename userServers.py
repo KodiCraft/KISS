@@ -2,6 +2,7 @@ import os
 import json
 from PyQt5 import QtWidgets
 from options import Options
+from pinger import ping
 
 class UserServers:
     def __init__(self):
@@ -43,7 +44,7 @@ class UserServers:
     def update_ui(self, ui):
         ui.userList.clear()
         for server in self.servers:
-            ui.userList.addTopLevelItem(QtWidgets.QTreeWidgetItem([server['url'], "Yes" if server['wls'] else "No"]))
+            ui.userList.addTopLevelItem(QtWidgets.QTreeWidgetItem([server['url'], "Yes" if server['wls'] else "No", str(ping(server['url']))]))
     
     def get_platform_server_path():
         # Check if the folder already exists. If not, create it.
