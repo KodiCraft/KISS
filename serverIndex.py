@@ -34,8 +34,11 @@ def setup_index_list(ui, options: Options):
     for entry in index:
         ui.indexList.addTopLevelItem(QtWidgets.QTreeWidgetItem([entry['url'], "Yes" if entry['wls'] else "No", "Pinging..."]))
         # Start a thread to ping each server and update the list
-        def ping_server(item):
+        def ping_server(item: QtWidgets.QTreeWidgetItem):
             pingval = ping(item.text(0))
+            # Make sure item still exists
+            if not item:
+                return
             if pingval == -1:
                 item.setText(2, "Offline")
             else:

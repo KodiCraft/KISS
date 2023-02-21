@@ -7,9 +7,13 @@ import sys
 def box_on_error(title):
     def decorator(func):
         @functools.wraps(func)
-        def wrapper():
+        def wrapper(*args, **kwargs):
+            print("args: " + str(args))
+            
             try:
-                return func()
+                if isinstance(args[0], bool):
+                    return func(*args[1:], **kwargs)
+                return func(*args, **kwargs)
             except Exception as e:
                 box = QtWidgets.QMessageBox()
                 box.setWindowTitle(title)

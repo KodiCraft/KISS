@@ -21,7 +21,7 @@ class WrlList:
                     break
                 if file.endswith(".wrl"):
                     try:
-                        if "cpBureau" in open(os.path.join(root, file)).read():
+                        if "WorldInfo" in open(os.path.join(root, file)).read():
                          self.wrls.append(os.path.join(root, file))
                     except:
                         pass
