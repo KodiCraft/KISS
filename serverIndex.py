@@ -2,6 +2,7 @@ import requests
 from options import Options
 from PyQt5 import QtCore, QtGui, QtWidgets
 from pinger import ping
+import threading
 
 def get_index(url):
     try:
@@ -31,4 +32,12 @@ def setup_index_list(ui, options: Options):
     ui.indexList.clear()
     # Add each entry to the list
     for entry in index:
-        ui.indexList.addTopLevelItem(QtWidgets.QTreeWidgetItem([entry['url'], "Yes" if entry['wls'] else "No", str(ping(entry['url']))]))
+        ui.indexList.addTopLevelItem(QtWidgets.QTreeWidgetItem([entry['url'], "Yes" if entry['wls'] else "No", "Pinging..."]))
+        # Start a thread to ping each server and update the list
+        def ping_server(item):
+            pingval = ping(item.text(0))
+            if pingval == -1:
+                item.setText(2, "Offline")
+            else:
+                item.setText(2, str(pingval) + "ms")
+        threading.Thread(target=ping_server, args=(ui.indexList.topLevelItem(ui.indexList.topLevelItemCount() - 1),)).start()

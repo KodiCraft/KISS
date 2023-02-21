@@ -3,6 +3,7 @@ import json
 from PyQt5 import QtWidgets
 from options import Options
 from pinger import ping
+import threading
 
 class UserServers:
     def __init__(self):
@@ -44,8 +45,17 @@ class UserServers:
     def update_ui(self, ui):
         ui.userList.clear()
         for server in self.servers:
-            ui.userList.addTopLevelItem(QtWidgets.QTreeWidgetItem([server['url'], "Yes" if server['wls'] else "No", str(ping(server['url']))]))
+            ui.userList.addTopLevelItem(QtWidgets.QTreeWidgetItem([server['url'], "Yes" if server['wls'] else "No", "Pinging..."]))
+            # Start a thread to ping each server and update the list
+            def ping_server(item):
+                pingval = ping(item.text(0))
+                if pingval == -1:
+                    item.setText(2, "Offline")
+                else:
+                    item.setText(2, str(pingval) + "ms")
+            threading.Thread(target=ping_server, args=(ui.indexList.topLevelItem(ui.indexList.topLevelItemCount() - 1),)).start()
     
+
     def get_platform_server_path():
         # Check if the folder already exists. If not, create it.
         if not os.path.exists(os.path.join(Options.get_platform_config_prefix(), 'KISS')):

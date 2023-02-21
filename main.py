@@ -17,6 +17,7 @@ import vrmlUpdater
 import pinger
 
 from wrls import WrlList
+from decorators import box_on_error
 
 app = QtWidgets.QApplication(sys.argv)
 MainWindow = QtWidgets.QMainWindow()
@@ -26,11 +27,13 @@ ui.setupUi(MainWindow)
 options = Options(ui)
 user_servers = UserServers()
 
+@box_on_error("Error adding server")
 def add_server():
     user_servers.add_server(ui.serverInput.text(), ui.wlsToggle.isChecked())
     ui.serverInput.clear()
     user_servers.update_ui(ui)
 
+@box_on_error("Error removing server")
 def remove_server():
     getSelected = ui.userList.selectedItems()
     if getSelected:
@@ -44,10 +47,12 @@ def update_wrl_list():
     wrl_list.update_ui(ui)
 options.onSaveCallbacks.append(update_wrl_list)
 
+@box_on_error("Error updating wrl list")
 def select_all_wrls():
     for i in range(ui.wrlList.count()):
         ui.wrlList.item(i).setSelected(True)
 
+@box_on_error("Error updating wrl list")
 def deselect_all_wrls():
     for i in range(ui.wrlList.count()):
         ui.wrlList.item(i).setSelected(False)
@@ -91,7 +96,7 @@ def get_selected_server():
             'url': ui.indexList.selectedItems()[0].text(0),
             'wls': ui.indexList.selectedItems()[0].text(1) == "Yes"
         }
-
+@box_on_error("Error applying server")
 def apply():
    # Make sure the user has selected a server and at least one wrl
     if not get_selected_server() or not ui.wrlList.selectedItems():
@@ -108,6 +113,7 @@ def apply():
     ui.indexList.clearSelection()
     ui.wrlList.clearSelection()
 
+@box_on_error("Error browsing for wrl directory")
 def browse_for_wrl_directory():
     # Open a dialog to select a directory
     folder = QtWidgets.QFileDialog.getExistingDirectory(MainWindow, "Select wrl directory")
