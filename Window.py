@@ -138,7 +138,7 @@ class Ui_MainWindow(object):
         self.browseWrlFolder.setText(_translate("MainWindow", "..."))
         self.label_5.setToolTip(_translate("MainWindow", "<html><head/><body><p>The Server Index is a centralised index managed by kodicraft4#6685 </p><p>which aims to make discovery of Sapari servers easier.</p><p>You may use another index if you\'d like.</p><p>DM Kodi if you want your server added!</p></body></html>"))
         self.label_5.setText(_translate("MainWindow", "Server Index URL (?)"))
-        self.indexUrl.setText(_translate("MainWindow", "https://sapari.kdcf.me"))
+        self.indexUrl.setText(_translate("MainWindow", "https://servers.repository.sapari.kdcf.me"))
         self.saveButton.setText(_translate("MainWindow", "Save"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.options_tab), _translate("MainWindow", "Options"))
         self.actionOpen_worlds_folder.setText(_translate("MainWindow", "Open worlds folder..."))
