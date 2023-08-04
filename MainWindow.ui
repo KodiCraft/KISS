@@ -335,7 +335,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>https://sapari.kdcf.me</string>
+       <string>https://servers.repository.sapari.kdcf.me</string>
       </property>
      </widget>
      <widget class="QPushButton" name="saveButton">
